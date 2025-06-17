@@ -6,7 +6,7 @@ Este projeto é um e-commerce simples com as funcionalidades básicas de CRUD (C
 ## 📌 Objetivo
 
 Criar uma aplicação web que permita gerenciar produtos de uma loja online (ex: camisetas, livros, etc.), utilizando as tecnologias:
-- **Frontend**: HTML + CSS (com Bootstrap)
+- **Frontend**: HTML + CSS (com Bootstrap) + JS
 - **Backend**: PHP
 - **Banco de dados**: MySQL
 
