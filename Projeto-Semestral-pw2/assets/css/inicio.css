@@ -1,0 +1,52 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #33312B; 
+    display: flex;
+    flex-direction: column; /* Alinha os elementos verticalmente */
+    justify-content: flex-start; /* Alinha os elementos mais para cima */
+    align-items: center; /* Centraliza horizontalmente */
+    height: 100vh; /* Para ocupar a altura total da tela */
+    margin: 0; /* Remove margens padrão */
+    padding-top: 10vh; /* Adiciona espaço no topo */
+    gap: 1rem; /* Espaçamento entre título e subtítulo */
+}
+
+.title {
+    color: #F0BE01; /* Cor do texto */
+    font-size: 3rem; /* Tamanho da fonte */
+}
+
+.subtitle {
+    color: white; /* Cor do texto */
+    font-size: 1.5rem; /* Tamanho da fonte */
+}
+
+.btn-primary {
+    background-color: #F0BE01; /* Cor de fundo */
+    color: #33312B; /* Cor do texto */
+    border: none; /* Remove borda */
+    padding: 0.75rem 1.5rem; /* Espaçamento interno */
+    font-size: 1rem; /* Tamanho da fonte */
+    border-radius: 0.5rem; /* Bordas arredondadas */
+    cursor: pointer; /* Cursor de ponteiro */
+    transition: background-color 0.3s ease; /* Transição suave */
+}
+
+.btn-primary:hover {
+    background-color: #d9a801; /* Cor de fundo ao passar o mouse */
+}
+
+.btn-secondary {
+    background-color: #55524E; /* Cor de fundo */
+    color: white; /* Cor do texto */
+    border: none; /* Remove borda */
+    padding: 0.75rem 1.5rem; /* Espaçamento interno */
+    font-size: 1rem; /* Tamanho da fonte */
+    border-radius: 0.5rem; /* Bordas arredondadas */
+    cursor: pointer; /* Cursor de ponteiro */
+    transition: background-color 0.3s ease; /* Transição suave */
+}
+
+.btn-secondary:hover {
+    background-color: #6b6863; /* Cor de fundo ao passar o mouse */
+}
