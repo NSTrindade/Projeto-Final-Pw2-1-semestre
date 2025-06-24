@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/Projeto-Semestral-pw2/assets/css/global.css" rel="stylesheet">
+    <link href="/Projeto-Final-Pw2-1-semestre-main/assets/css/global.css" rel="stylesheet">
     <title>UrbanStyle - Contato</title>
 </head>
 <body>
@@ -13,10 +13,22 @@
         <p>Entre em contato conosco</p>
     </div>
 
+    <nav class="nav">
+        <div class="container">
+            <ul>
+                <li><a href="/Projeto-Final-Pw2-1-semestre-main/views/site/inicio.php">Início</a></li>
+                <li><a href="/Projeto-Final-Pw2-1-semestre-main/views/produtos/home.php" class="active">Produtos</a></li>
+                <li><a href="/Projeto-Final-Pw2-1-semestre-main/views/site/sobre.php">Sobre</a></li>
+                <li><a href="/Projeto-Final-Pw2-1-semestre-main/views/site/contato.php">Contato</a></li>
+                <li><a href="/Projeto-Final-Pw2-1-semestre-main/views/auth/login.php">Login</a></li>
+            </ul>
+        </div>
+    </nav>
+
     <div class="container">
         <div class="card">
             <h3>Fale Conosco</h3>
-            <form>
+            <form action="/Projeto-Final-Pw2-1-semestre-main/controllers/enviar_contato.php" method="POST">
                 <div class="form-group">
                     <label for="nome">Nome Completo</label>
                     <input type="text" id="nome" name="nome" class="form-control" required>
@@ -38,7 +50,7 @@
                 </div>
                 
                 <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
-                <a href="/Projeto-Semestral-pw2/views/site/inicio.php" class="btn btn-secondary">Voltar</a>
+                <a href="/Projeto-Final-Pw2-1-semestre-main/views/site/inicio.php" class="btn btn-secondary">Voltar</a>
             </form>
         </div>
 

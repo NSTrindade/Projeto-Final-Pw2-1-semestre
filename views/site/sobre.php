@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/Projeto-Semestral-pw2/assets/css/global.css" rel="stylesheet">
-    <link href="/Projeto-Semestral-pw2/assets/css/sobre.css" rel="stylesheet">
+    <link href="/Projeto-Final-Pw2-1-semestre-main/assets/css/global.css" rel="stylesheet">
+    <link href="/Projeto-Final-Pw2-1-semestre-main/assets/css/sobre.css" rel="stylesheet">
     <title>UrbanStyle - Sobre Nós</title>
 </head>
 <body>
@@ -13,6 +13,18 @@
         <h1>UrbanStyle</h1>
         <p class="subtitle">Conheça nossa história</p>
     </div>
+
+    <nav class="nav">
+        <div class="container">
+            <ul>
+                <li><a href="/Projeto-Final-Pw2-1-semestre-main/views/site/inicio.php">Início</a></li>
+                <li><a href="/Projeto-Final-Pw2-1-semestre-main/views/produtos/home.php" class="active">Produtos</a></li>
+                <li><a href="/Projeto-Final-Pw2-1-semestre-main/views/site/sobre.php">Sobre</a></li>
+                <li><a href="/Projeto-Final-Pw2-1-semestre-main/views/site/contato.php">Contato</a></li>
+                <li><a href="/Projeto-Final-Pw2-1-semestre-main/views/auth/login.php">Login</a></li>
+            </ul>
+        </div>
+    </nav>
 
     <div class="container">
         <div class="sobre-nos">
@@ -29,7 +41,7 @@
         </div>
         
         <div style="text-align: center;">
-            <a href="/Projeto-Semestral-pw2/views/site/inicio.php" class="btn-voltar">Voltar ao Início</a>
+            <a href="/Projeto-Final-Pw2-1-semestre-main/views/site/inicio.php" class="btn-voltar">Voltar ao Início</a>
         </div>
     </div>
 </body>

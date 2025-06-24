@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/Projeto-Semestral-pw2/assets/css/global.css" rel="stylesheet">
-    <link href="/Projeto-Semestral-pw2/assets/css/produtos.css" rel="stylesheet">
+    <link href="/Projeto-Final-Pw2-1-semestre-main/assets/css/global.css" rel="stylesheet">
+    <link href="/Projeto-Final-Pw2-1-semestre-main/assets/css/produtos.css" rel="stylesheet">
     <title>UrbanStyle - Produtos</title>
 </head>
 <body>
@@ -17,11 +17,11 @@
     <nav class="nav">
         <div class="container">
             <ul>
-                <li><a href="/Projeto-Semestral-pw2/views/site/inicio.php">Início</a></li>
-                <li><a href="/Projeto-Semestral-pw2/views/produtos/home.php" class="active">Produtos</a></li>
-                <li><a href="/Projeto-Semestral-pw2/views/site/sobre.php">Sobre</a></li>
-                <li><a href="/Projeto-Semestral-pw2/views/site/contato.php">Contato</a></li>
-                <li><a href="/Projeto-Semestral-pw2/views/auth/login.php">Login</a></li>
+                <li><a href="/Projeto-Final-Pw2-1-semestre-main/views/site/inicio.php">Início</a></li>
+                <li><a href="/Projeto-Final-Pw2-1-semestre-main/views/produtos/home.php" class="active">Produtos</a></li>
+                <li><a href="/Projeto-Final-Pw2-1-semestre-main/views/site/sobre.php">Sobre</a></li>
+                <li><a href="/Projeto-Final-Pw2-1-semestre-main/views/site/contato.php">Contato</a></li>
+                <li><a href="/Projeto-Final-Pw2-1-semestre-main/views/auth/login.php">Login</a></li>
             </ul>
         </div>
     </nav>

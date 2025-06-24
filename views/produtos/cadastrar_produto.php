@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/Projeto-Semestral-pw2/assets/css/global.css" rel="stylesheet">
-    <link href="/Projeto-Semestral-pw2/assets/css/admin.css" rel="stylesheet">
+    <link href="/Projeto-Final-Pw2-1-semestre-main/assets/css/global.css" rel="stylesheet">
+    <link href="/Projeto-Final-Pw2-1-semestre-main/assets/css/admin.css" rel="stylesheet">
     <title>UrbanStyle - Cadastrar Produto</title>
 </head>
 <body>
@@ -17,10 +17,10 @@
     <nav class="admin-nav">
         <div class="container">
             <ul>
-                <li><a href="/Projeto-Semestral-pw2/views/admin/dashboard.php">Dashboard</a></li>
-                <li><a href="/Projeto-Semestral-pw2/views/produtos/cadastrar_produto.php" class="active">Cadastrar Produto</a></li>
-                <li><a href="/Projeto-Semestral-pw2/views/admin/relatorios.php">Relatórios</a></li>
-                <li><a href="/Projeto-Semestral-pw2/views/site/inicio.php">Ver Site</a></li>
+                <li><a href="/Projeto-Final-Pw2-1-semestre-main/views/admin/dashboard.php">Dashboard</a></li>
+                <li><a href="/Projeto-Final-Pw2-1-semestre-main/views/produtos/cadastrar_produto.php" class="active">Cadastrar Produto</a></li>
+                <li><a href="/Projeto-Final-Pw2-1-semestre-main/views/admin/relatorios.php">Relatórios</a></li>
+                <li><a href="/Projeto-Final-Pw2-1-semestre-main/views/site/inicio.php">Ver Site</a></li>
             </ul>
         </div>
     </nav>
@@ -69,7 +69,7 @@
                 
                 <div style="text-align: center; margin-top: 2rem;">
                     <button type="submit" class="btn btn-primary">Cadastrar Produto</button>
-                    <a href="/Projeto-Semestral-pw2/views/admin/dashboard.php" class="btn btn-secondary">Cancelar</a>
+                    <a href="/Projeto-Final-Pw2-1-semestre-main/views/admin/dashboard.php" class="btn btn-secondary">Cancelar</a>
                 </div>
             </form>
         </div>

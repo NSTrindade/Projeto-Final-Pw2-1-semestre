@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/Projeto-Semestral-pw2/assets/css/global.css" rel="stylesheet">
-    <link href="/Projeto-Semestral-pw2/assets/css/admin.css" rel="stylesheet">
+    <link href="/Projeto-Final-Pw2-1-semestre-main/assets/css/global.css" rel="stylesheet">
+    <link href="/Projeto-Final-Pw2-1-semestre-main/assets/css/admin.css" rel="stylesheet">
     <title>UrbanStyle - Dashboard Admin</title>
 </head>
 <body>
@@ -17,10 +17,10 @@
     <nav class="admin-nav">
         <div class="container">
             <ul>
-                <li><a href="/Projeto-Semestral-pw2/views/admin/dashboard.php" class="active">Dashboard</a></li>
-                <li><a href="/Projeto-Semestral-pw2/views/produtos/cadastrar_produto.php">Cadastrar Produto</a></li>
-                <li><a href="/Projeto-Semestral-pw2/views/admin/relatorios.php">Relatórios</a></li>
-                <li><a href="/Projeto-Semestral-pw2/views/site/inicio.php">Ver Site</a></li>
+                <li><a href="/Projeto-Final-Pw2-1-semestre-main/views/admin/dashboard.php" class="active">Dashboard</a></li>
+                <li><a href="/Projeto-Final-Pw2-1-semestre-main/views/produtos/cadastrar_produto.php">Cadastrar Produto</a></li>
+                <li><a href="/Projeto-Final-Pw2-1-semestre-main/views/admin/relatorios.php">Relatórios</a></li>
+                <li><a href="/Projeto-Final-Pw2-1-semestre-main/views/site/inicio.php">Ver Site</a></li>
             </ul>
         </div>
     </nav>
@@ -51,10 +51,10 @@
         <div class="admin-section">
             <h3>Ações Rápidas</h3>
             <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                <a href="/Projeto-Semestral-pw2/views/produtos/cadastrar_produto.php" class="btn btn-primary">Novo Produto</a>
+                <a href="/Projeto-Final-Pw2-1-semestre-main/views/produtos/cadastrar_produto.php" class="btn btn-primary">Novo Produto</a>
                 <a href="#" class="btn btn-secondary">Ver Pedidos</a>
                 <a href="#" class="btn btn-secondary">Gerenciar Usuários</a>
-                <a href="/Projeto-Semestral-pw2/views/admin/relatorios.php" class="btn btn-secondary">Relatórios</a>
+                <a href="/Projeto-Final-Pw2-1-semestre-main/views/admin/relatorios.php" class="btn btn-secondary">Relatórios</a>
             </div>
         </div>
 
