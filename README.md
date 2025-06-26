@@ -45,9 +45,6 @@ USE ecommerce;
 
 ### Tabela `produtos`:
 ```sql
-CREATE DATABASE ecommerce;
-USE ecommerce;
-
 CREATE TABLE Produto (
   id INT AUTO_INCREMENT PRIMARY KEY,
   nome VARCHAR(100) NOT NULL,
