@@ -85,17 +85,6 @@ if ($conn->connect_error) {
 
 ---
 
-## 🎨 Design Responsivo
-
-- Utilização de [Bootstrap](https://getbootstrap.com/) para responsividade e estilo visual.
-- Interface simples e moderna, adaptável para celulares, tablets e desktops.
-
-```html
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-```
-
----
-
 ## 🔐 Segurança
 
 - Validação de dados no servidor (PHP)
