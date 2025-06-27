@@ -1,6 +1,7 @@
 <?php
+require_once '../includes/auth_functions.php';
+requireAdmin(); // Verifica se o usuário é administrador
 
-// inclui a parte de conexao ao banco de dados
 require_once '../includes/db_connection.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -58,10 +59,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             ':imagem'    => $caminho_imagem // Salva o nome do arquivo ou NULL
         ]);
         
-        header("Location: ../views/admin/dashboard.php?status=success");
+        header("Location: ../views/produtos/home.php?status=success");
         exit();
 
     } catch (PDOException $e) {
         die("Erro ao cadastrar o produto: " . $e->getMessage());
     }
+} else {
+    // Se não for POST, redirecionar
+    header("Location: ../views/produtos/cadastrar_produto.php");
+    exit();
 }

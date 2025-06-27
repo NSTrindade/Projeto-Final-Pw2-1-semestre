@@ -1,50 +1,50 @@
+# 🛒 UrbanStyle - E-commerce com Controle de Acesso
 
-# 🛒 Projeto E-commerce Simples (CRUD com PHP e MySQL)
+Este projeto é um e-commerce completo com sistema de autenticação e autorização baseado em papéis de usuário (Cliente e Administrador), desenvolvido para o Projeto Final de PW II.
 
-Este projeto é um e-commerce simples com as funcionalidades básicas de CRUD (Criar, Ler, Atualizar e Deletar), feito para o Projeto Final de PW II.
+## 🎯 Funcionalidades Implementadas
 
-## 📌 Objetivo
+### ✅ **Sistema de Autenticação e Autorização**
+- **Dois tipos de usuário**: Cliente e Administrador
+- **Conta de Administrador padrão**:
+  - Email: `admin@example.com`
+  - Senha: `adm1234`
+- **Controle de acesso baseado em papéis**
+- **Sessões seguras** com verificação de autenticação
 
-Criar uma aplicação web que permita gerenciar produtos de uma loja online (ex: camisetas, livros, etc.), utilizando as tecnologias:
-- **Frontend**: HTML + CSS (com Bootstrap) + JS
-- **Backend**: PHP
-- **Banco de dados**: MySQL
+### ✅ **Funcionalidades do Administrador**
+- **Acesso exclusivo ao Dashboard** (`/views/admin/dashboard.php`)
+- **CRUD completo de produtos** (Criar, Ler, Atualizar, Deletar)
+- **Estatísticas em tempo real** (produtos cadastrados, usuários registrados)
+- **Navegação dinâmica** com link para Dashboard quando logado
 
----
+### ✅ **Funcionalidades do Cliente**
+- **Visualização de produtos** sem acesso às funções de gerenciamento
+- **Sistema de carrinho de compras** (funcionalidade implementada)
+- **Registro de conta** automático como Cliente
 
-## 🗂️ Estrutura de Pastas
+### ✅ **Melhorias na Interface**
+- **CSS global aplicado** em todas as páginas
+- **Mensagens de feedback** para todas as ações
+- **Navegação responsiva** com Bootstrap 5
+- **Controle de visibilidade** dos botões de gerenciamento
 
-```
-/ecommerce
-  /assets
-    /css
-    /js
-  /includes
-    db_connection.php
-  /views
-    home.php
-    edit.php
-    create.php
-  /controllers
-    create.php
-    update.php
-    delete.php
-  /models
-    Product.php (opcional)
-```
+## 🗄️ **Estrutura do Banco de Dados**
 
----
-
-## 🧱 Banco de Dados
-
-### Criação do Banco:
+### Tabelas Criadas:
 ```sql
-CREATE DATABASE ecommerce;
-USE ecommerce;
-```
+-- Usuários com papel
+CREATE TABLE Usuario (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nome VARCHAR(100) NOT NULL,
+  email VARCHAR(100) UNIQUE NOT NULL,
+  senha VARCHAR(255) NOT NULL,
+  papel ENUM('cliente', 'administrador') DEFAULT 'cliente',
+  telefone VARCHAR(20) NULL,
+  data_cadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
 
-### Tabela `produtos`:
-```sql
+-- Produtos
 CREATE TABLE Produto (
   id INT AUTO_INCREMENT PRIMARY KEY,
   nome VARCHAR(100) NOT NULL,
@@ -53,173 +53,171 @@ CREATE TABLE Produto (
   imagem VARCHAR(255)
 );
 
-ALTER TABLE Usuario ADD COLUMN telefone VARCHAR(20) NULL;
-
-CREATE TABLE Usuario (
+-- Carrinho de compras
+CREATE TABLE Carrinho (
   id INT AUTO_INCREMENT PRIMARY KEY,
-  nome VARCHAR(100) NOT NULL,
-  email VARCHAR(100) NOT NULL UNIQUE, /* UNIQUE para não ter emails repetidos */
-  senha VARCHAR(255) NOT NULL,       /* VARCHAR(255) para armazenar a senha criptografada (hash) */
-  data_cadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+  usuario_id INT NOT NULL,
+  produto_id INT NOT NULL,
+  quantidade INT NOT NULL DEFAULT 1,
+  data_adicionado TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (usuario_id) REFERENCES Usuario(id),
+  FOREIGN KEY (produto_id) REFERENCES Produto(id)
 );
 
+-- Pedidos
+CREATE TABLE Pedido (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  usuario_id INT NOT NULL,
+  data_pedido TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  status ENUM('pendente', 'aprovado', 'enviado', 'entregue', 'cancelado') DEFAULT 'pendente',
+  total DECIMAL(10,2) NOT NULL,
+  FOREIGN KEY (usuario_id) REFERENCES Usuario(id)
+);
 
-
-SELECT * FROM USUARIO;
+-- Itens do pedido
+CREATE TABLE ItemPedido (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  pedido_id INT NOT NULL,
+  produto_id INT NOT NULL,
+  quantidade INT NOT NULL,
+  preco_unitario DECIMAL(10,2) NOT NULL,
+  FOREIGN KEY (pedido_id) REFERENCES Pedido(id),
+  FOREIGN KEY (produto_id) REFERENCES Produto(id)
+);
 ```
 
----
+## 🚀 **Como Configurar e Usar**
 
-## 🔌 Conexão com o Banco
+### 1. **Configuração do Banco de Dados**
+```bash
+# Execute o script SQL
+mysql -u root -p < dados_banco.sql
+```
 
-Arquivo: `includes/db_connection.php`
-
+### 2. **Configuração da Conexão**
+Edite `includes/db_connection.php`:
 ```php
-<?php
 $host = 'localhost';
 $db   = 'ecommerce';
 $user = 'root';
 $pass = '';
-$conn = new mysqli($host, $user, $pass, $db);
-
-if ($conn->connect_error) {
-    die("Erro de conexão: " . $conn->connect_error);
-}
-?>
 ```
 
----
+### 3. **Credenciais de Acesso**
+- **Administrador**: admin@example.com / adm1234
+- **Clientes**: Registre-se através do formulário público
 
-## 🔧 Funcionalidades
-
-- ✅ **Cadastro de Produto** (`controllers/create.php`)
-- 📋 **Listagem de Produtos** (`views/home.php`)
-- ✏️ **Edição de Produto** (`views/edit.php` + `controllers/update.php`)
-- ❌ **Exclusão de Produto** (`controllers/delete.php`)
-
----
-
-## 🔐 Segurança
-
-- Validação de dados no servidor (PHP)
-- Prevenção de SQL Injection com prepared statements
-- Estrutura organizada para facilitar futuras implementações de autenticação
-
----
-
-## ✅ Checklist de Entrega
-
-- [x] Operações CRUD funcionais
-- [x] Conexão com banco de dados
-- [x] Design moderno e responsivo
-- [x] Estrutura organizada de pastas
-- [x] Código limpo e comentado
-
----
-
-## 🚀 Como Começar
-
-1. Suba o banco de dados no MySQL
-2. Ajuste os dados de conexão em `db_connection.php`
-3. Acesse o projeto via navegador local (ex: `http://localhost/ecommerce/views/home.php`)
-4. Comece a cadastrar e gerenciar produtos!
-
----
-
-Feito com 💻 para o Projeto Final de PW II.
-
-
----
-
-
-# 📁 Pasta `/views` - Interface do Usuário
-
-A pasta `/views` armazena **todas as telas visíveis pelo usuário**, ou seja, a **interface do sistema** de e-commerce. Aqui é onde ficam as páginas HTML/PHP responsáveis por mostrar conteúdos, formulários e resultados ao usuário.
-
-Abaixo estão os tipos de arquivos que podem existir dentro dessa pasta, organizados por função:
-
----
-
-## 🔹 Telas de Navegação Geral
-
-| Arquivo               | Função                                                             |
-|-----------------------|---------------------------------------------------------------------|
-| `inicio.php`          | Tela inicial do site, com destaques, banners, etc.                 |
-| `sobre.php`           | Página "Sobre nós"                                                 |
-| `contato.php`         | Formulário de contato                                              |
-| `termos.php`          | Termos de uso e políticas de privacidade                          |
-
----
-
-## 🔹 Telas de Autenticação
-
-| Arquivo               | Função                                                             |
-|-----------------------|---------------------------------------------------------------------|
-| `login.php`           | Tela de login de usuário                                           |
-| `cadastro_usuario.php`| Tela para novo usuário se cadastrar                                |
-| `logout.php`          | Arquivo que finaliza a sessão/logoff                               |
-
----
-
-## 🔹 Telas de Produtos (Core do e-commerce)
-
-| Arquivo               | Função                                                             |
-|-----------------------|---------------------------------------------------------------------|
-| `home.php`            | Listagem dos produtos à venda (página principal)                   |
-| `produto.php`         | Página detalhada de um único produto (`produto.php?id=1`)         |
-| `cadastrar_roupa.php` | Tela do formulário para cadastrar nova roupa (produto)             |
-| `edit.php`            | Tela para editar informações de um produto                        |
-| `meus_produtos.php`   | Lista de produtos cadastrados pelo usuário                         |
-
----
-
-## 🔹 Telas de Carrinho e Compra
-
-| Arquivo               | Função                                                             |
-|-----------------------|---------------------------------------------------------------------|
-| `carrinho.php`        | Exibe os itens adicionados ao carrinho de compras                  |
-| `finalizar_compra.php`| Formulário de checkout e dados de envio/pagamento                  |
-| `pedidos.php`         | Lista de pedidos realizados pelo usuário                           |
-| `detalhe_pedido.php`  | Detalhes de um pedido específico                                   |
-
----
-
-## 🔹 Telas de Administração (opcional)
-
-| Arquivo               | Função                                                             |
-|-----------------------|---------------------------------------------------------------------|
-| `dashboard.php`       | Painel administrativo com estatísticas                             |
-| `usuarios.php`        | Gerenciar usuários cadastrados                                     |
-| `relatorios.php`      | Relatórios de vendas e acessos                                     |
-
----
-
-## 📁 Sugestão de Organização com Subpastas
-
-Se o projeto ficar grande, você pode organizar melhor com subpastas dentro de `/views`:
+## 📁 **Estrutura de Arquivos**
 
 ```
-/views
-  /auth
-    login.php
-    cadastro_usuario.php
-  /produtos
-    home.php
-    cadastrar.php
-    edit.php
-    produto.php
-  /admin
-    dashboard.php
-    relatorios.php
-  /site
-    inicio.php
-    sobre.php
-    contato.php
+Projeto-Final-Pw2-1-semestre-main/
+├── index.php                           # Ponto de entrada
+├── dados_banco.sql                     # Script do banco atualizado
+├── includes/
+│   ├── db_connection.php              # Conexão com banco
+│   └── auth_functions.php             # Funções de autenticação
+├── controllers/
+│   ├── login_usuario.php              # Login com controle de papel
+│   ├── registrar_usuario.php          # Registro como cliente
+│   ├── logout.php                     # Logout
+│   ├── create.php                     # CRUD - Create (admin only)
+│   ├── update.php                     # CRUD - Update (admin only)
+│   ├── delete.php                     # CRUD - Delete (admin only)
+│   └── adicionar_carrinho.php         # Carrinho de compras
+├── views/
+│   ├── admin/
+│   │   ├── dashboard.php              # Dashboard admin (protegido)
+│   │   └── relatorios.php             # Relatórios
+│   ├── auth/
+│   │   ├── login.php                  # Login com mensagens
+│   │   └── cadastro_usuario.php       # Registro público
+│   ├── produtos/
+│   │   ├── home.php                   # Listagem de produtos
+│   │   ├── produto.php                # Detalhes + carrinho
+│   │   ├── cadastrar_produto.php      # Cadastro (admin only)
+│   │   └── edit.php                   # Edição (admin only)
+│   └── site/
+│       ├── inicio.php                 # Página inicial
+│       ├── sobre.php                  # Sobre
+│       └── contato.php                # Contato
+└── assets/
+    ├── css/                           # Estilos CSS
+    └── img/                           # Imagens
 ```
 
-Essa organização ajuda na escalabilidade e manutenção do projeto.
+## 🔒 **Controle de Acesso Implementado**
+
+### **Páginas Protegidas (Apenas Admin)**
+- `/views/admin/dashboard.php`
+- `/views/produtos/cadastrar_produto.php`
+- `/views/produtos/edit.php`
+- `/controllers/create.php`
+- `/controllers/update.php`
+- `/controllers/delete.php`
+
+### **Páginas Públicas**
+- `/views/produtos/home.php` (listagem de produtos)
+- `/views/produtos/produto.php` (detalhes + carrinho)
+- `/views/auth/login.php`
+- `/views/auth/cadastro_usuario.php`
+
+### **Funcionalidades por Papel**
+
+| Funcionalidade | Cliente | Administrador |
+|----------------|---------|---------------|
+| Visualizar produtos | ✅ | ✅ |
+| Adicionar ao carrinho | ✅ | ✅ |
+| Acessar dashboard | ❌ | ✅ |
+| CRUD de produtos | ❌ | ✅ |
+| Ver estatísticas | ❌ | ✅ |
+
+## 🎨 **Interface e UX**
+
+### **Melhorias Implementadas**
+- ✅ **Mensagens de feedback** para todas as ações
+- ✅ **Navegação dinâmica** baseada no papel do usuário
+- ✅ **CSS global** aplicado consistentemente
+- ✅ **Responsividade** com Bootstrap 5
+- ✅ **Controle de visibilidade** dos botões de gerenciamento
+
+### **Fluxo de Navegação**
+1. **Usuário não logado**: Acesso limitado à visualização
+2. **Cliente logado**: Visualização + carrinho
+3. **Admin logado**: Todas as funcionalidades + dashboard
+
+## 🔧 **Funcionalidades Técnicas**
+
+### **Segurança**
+- ✅ **Prepared Statements** para prevenir SQL Injection
+- ✅ **Validação de dados** no servidor
+- ✅ **Controle de sessão** seguro
+- ✅ **Verificação de papéis** em todas as páginas protegidas
+
+### **Performance**
+- ✅ **Queries otimizadas** com índices
+- ✅ **Upload de imagens** com validação
+- ✅ **Cache de sessão** para usuários logados
+
+## 🐛 **Problemas Corrigidos**
+
+- ✅ **Controle de acesso** implementado em todas as páginas
+- ✅ **CSS global** aplicado em produto.php
+- ✅ **Carrinho de compras** funcional
+- ✅ **Botões de gerenciamento** ocultos para clientes
+- ✅ **Mensagens de erro** específicas e informativas
+- ✅ **Navegação dinâmica** baseada no papel do usuário
+- ✅ **Controller de update** corrigido (nomes dos campos)
+- ✅ **Warnings de sessão** corrigidos
+
+## 📝 **Próximos Passos Sugeridos**
+
+1. **Implementar checkout** do carrinho
+2. **Adicionar histórico de pedidos**
+3. **Sistema de avaliações** de produtos
+4. **Filtros avançados** (categoria, preço)
+5. **Sistema de cupons** de desconto
+6. **Relatórios detalhados** para administradores
 
 ---
 
-Feito para auxiliar na organização da interface de um projeto de e-commerce em PHP.
-
+**O projeto agora está 100% funcional com sistema completo de autenticação, autorização e todas as funcionalidades CRUD implementadas!** 🎉 

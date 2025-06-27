@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // insere no banco de dados usando Prepared Statements
     try {
         // prepara a query para evitar SQL Injection
-        $sql = "INSERT INTO Usuario (nome, email, senha, telefone) VALUES (:nome, :email, :senha, :telefone)";
+        $sql = "INSERT INTO Usuario (nome, email, senha, telefone, papel) VALUES (:nome, :email, :senha, :telefone, 'cliente')";
         $stmt = $pdo->prepare($sql);
         
         // executa a query com todos os valores
